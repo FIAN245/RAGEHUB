@@ -1,0 +1,12 @@
+import { randomHex, hexToRgb, hexToHsl } from './generators/color.js';
+import { rollDice } from './generators/dice.js';
+import { generatePassword } from './generators/password.js';
+import { randomQuote } from './generators/quote.js';
+function $(sel){return document.querySelector(sel);}
+/* COLOR */const genColorBtn=$('#gen-color');const colorFormat=$('#color-format');const swatch=$('#color-swatch');const colorValue=$('#color-value');
+function updateColorDisplay(hex){const format=colorFormat.value;swatch.style.background=hex;if(format==='hex')colorValue.textContent=hex;else if(format==='rgb')colorValue.textContent=hexToRgb(hex);else colorValue.textContent=hexToHsl(hex);}genColorBtn.addEventListener('click',()=>{const hex=randomHex();updateColorDisplay(hex);});
+/* DICE */const rollBtn=$('#roll-dice');const diceSides=$('#dice-sides');const diceCount=$('#dice-count');const diceResult=$('#dice-result');rollBtn.addEventListener('click',()=>{const {rolls,total}=rollDice(diceSides.value,diceCount.value);diceResult.innerHTML=`<div><strong>Rolls:</strong> ${rolls.join(', ')}</div><div><strong>Total:</strong> ${total}</div>`;});
+/* PASSWORD */const genPwBtn=$('#gen-password');const pwLength=$('#pw-length');const pwUpper=$('#pw-upper');const pwLower=$('#pw-lower');const pwNumbers=$('#pw-numbers');const pwSymbols=$('#pw-symbols');const pwValue=$('#password-value');const copyPw=$('#copy-password');genPwBtn.addEventListener('click',()=>{const opts={upper:pwUpper.checked,lower:pwLower.checked,numbers:pwNumbers.checked,symbols:pwSymbols.checked};pwValue.value=generatePassword(pwLength.value,opts);});copyPw.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pwValue.value);copyPw.textContent='Copied!';setTimeout(()=>copyPw.textContent='Copy',1200);}catch(e){alert('Copy failed.');}});
+/* QUOTE */const genQuoteBtn=$('#gen-quote');const quoteCat=$('#quote-category');const quoteText=$('#quote-text');const quoteAuthor=$('#quote-author');genQuoteBtn.addEventListener('click',()=>{const q=randomQuote(quoteCat.value);quoteText.textContent=q.text;quoteAuthor.textContent=q.author?'— '+q.author:'';});
+/* THEME */const themeToggle=$('#theme-toggle');themeToggle.addEventListener('click',()=>{document.body.classList.toggle('light');});
+updateColorDisplay(randomHex());

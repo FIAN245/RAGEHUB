@@ -1,0 +1,1 @@
+export function rollDice(sides=6,count=1){sides=Math.max(1,parseInt(sides)||6);count=Math.max(1,Math.min(100,parseInt(count)||1));const rolls=[];for(let i=0;i<count;i++){rolls.push(Math.floor(Math.random()*sides)+1);}const total=rolls.reduce((a,b)=>a+b,0);return {rolls,total};}
