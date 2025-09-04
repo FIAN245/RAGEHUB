@@ -45,3 +45,18 @@ body{margin:0;
   eight:72px;
         border-radius:8px;
        }
+/* ------------------ LIGHT THEME ------------------ */
+body.light{
+  --bg: #f6f9fc;
+  --text: #0b1220;
+  --muted: #4b5b6a;
+  --card: rgba(0,0,0,0.03);
+  --glass: rgba(0,0,0,0.04);
+  --border: rgba(0,0,0,0.10);
+  --shadow: 0 6px 24px rgba(10, 30, 60, 0.10);
+}
+
+/* Optional: transisi biar mulus saat ganti tema */
+*{
+  transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease;
+}
