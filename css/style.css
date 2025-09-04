@@ -47,9 +47,9 @@ body{margin:0;
        }
 /* ------------------ LIGHT THEME ------------------ */
 body.light{
-  --bg: #f6f9fc;
-  --text: #0b1220;
-  --muted: #4b5b6a;
+  --bg: #f6f9fc;       /* background jadi terang */
+  --text: #0b1220;     /* teks utama jadi gelap */
+  --muted: #4b5b6a;    /* teks sekunder jadi abu gelap */
   --card: rgba(0,0,0,0.03);
   --glass: rgba(0,0,0,0.04);
   --border: rgba(0,0,0,0.10);
